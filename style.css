@@ -1233,6 +1233,8 @@ textarea {
   cursor: none;
   opacity: 0;
   transform: translateY(35px);
+  display: flex;
+  flex-direction: column;
 }
 /* Subtle coloured top-edge glow line */
 .product-card::before {
@@ -1405,6 +1407,9 @@ textarea {
   padding: 1.2rem 1.1rem 1rem;
   background: transparent;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 /* Coloured category pill */
@@ -1464,6 +1469,7 @@ textarea {
   padding-top: 0.75rem;
   border-top: 1px solid rgba(232, 197, 201, 0.35);
   position: relative;
+  margin-top: auto;
 }
 /* Animated border shimmer on hover */
 .product-footer::before {
@@ -1528,6 +1534,10 @@ textarea {
   position: relative;
   overflow: hidden;
   box-shadow: 0 3px 12px rgba(107, 45, 58, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 .add-to-cart-btn::before {
   content: "";
@@ -3597,13 +3607,6 @@ body.cart-open .navbar {
   .product-name {
     font-size: 0.9rem;
   }
-  .product-price {
-    font-size: 1.1rem;
-  }
-  .add-to-cart-btn {
-    font-size: 0.6rem;
-    padding: 0.4rem 0.7rem;
-  }
   .filter-bar {
     gap: 0.5rem;
   }
@@ -3636,25 +3639,39 @@ body.cart-open .navbar {
   }
 }
 
-/* ── MOBILE — fix product footer button stacking ─────────── */
-@media (max-width: 480px) {
+/* ── MOBILE — product footer alignment fix ─────────────────── */
+@media (max-width: 768px) {
   .product-footer {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.4rem;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem;
   }
-  .add-to-cart-btn {
+  .product-price {
     width: 100%;
     text-align: center;
+    font-size: 1rem;
+  }
+  .add-to-cart-btn {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     font-size: 0.62rem;
-    padding: 0.5rem;
+    padding: 0.5rem 0.6rem;
+    flex-shrink: unset;
   }
-  .product-name {
-    font-size: 0.82rem;
-  }
-  /* Hide quick view on mobile — tapping card opens modal */
   .product-quick-view {
     display: none !important;
+  }
+  .product-desc {
+    display: none;
+  }
+  .product-info {
+    padding: 0.75rem;
+  }
+  .product-name {
+    font-size: 0.85rem;
   }
 }
 
